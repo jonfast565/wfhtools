@@ -93,7 +93,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdli
 	create_console();
 	
 	std::cout << "--- Mouse Mover ---" << std::endl;
-	std::cout << "Click Left Ctrl to start and Esc to stop." << std::endl;
+	std::cout << "Click Pause+Break to start/stop and Esc to exit." << std::endl;
 	
 	init_cursor();
 	set_keyboard_interrupts(hInstance);
@@ -179,7 +179,7 @@ LRESULT CALLBACK keyboard_hook_proc(const int code, const WPARAM w_param, const 
 
 	if (w_param == WM_KEYDOWN) {
 		switch (keyboard_hook_struct->vkCode) {
-		case VK_LCONTROL:
+		case VK_PAUSE:
 			running = !running;
 			std::cout << (running ? "Running." : "Stopped running.") << std::endl;
 			break;
